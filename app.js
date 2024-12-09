@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const connectDb = require('./utilis/dbConnect');
-
+const userRoutes = require('./routes/user.route')
 
 
 app.use(cors());
@@ -15,10 +15,12 @@ app.use(cookieParser())
 
 connectDb();
 
-app.get('/',(res,req) => {
-    res.send('Hello World')
+app.get('/',(req,res) => {
+    res.send('App Start Successfully')
 
 })
+
+app.use('/user',userRoutes);
 
 
 
